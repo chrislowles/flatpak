@@ -4,18 +4,18 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 doTheThing() {
-    #. /etc/os-release
-    #case "$ID" in
-    #    linuxmint)
-    #        echo "Running on Linux Mint."
-    #        sudo apt update
-    #        sudo apt install flatpak
-    #        ;;
-    #    *)
-    #        echo "Unsupported Linux distro: $ID"
-    #        exit 1
-    #        ;;
-    #esac
+    . /etc/os-release
+    case "$ID" in
+        linuxmint)
+            echo "Running on Linux Mint."
+            apt update
+            apt install steam-devices
+            ;;
+        *)
+            echo "Unsupported Linux distro: $ID"
+            exit 1
+            ;;
+    esac
     flatpak remote-delete fedora
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub \
