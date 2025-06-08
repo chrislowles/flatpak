@@ -7,12 +7,10 @@ doTheThing() {
     . /etc/os-release
     case "$ID" in
         linuxmint)
-            echo "Running on Linux Mint."
             apt update
             apt install steam-devices
             ;;
         *)
-            echo "Unsupported Linux distro: $ID"
             exit 1
             ;;
     esac
