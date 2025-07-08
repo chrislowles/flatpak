@@ -25,17 +25,15 @@ doTheThing() {
 			exit 1
 			;;
 	esac
-	flatpak install flathub \
-	com.github.tchx84.Flatseal io.github.giantpinkrobots.flatsweep \
-	me.timschneeberger.jdsp4linux org.gnome.Boxes \
-	com.obsproject.Studio org.audacityteam.Audacity org.kde.krita org.kde.kdenlive org.kde.subtitlecomposer \
-	io.github.shiftey.Desktop \
-	org.qbittorrent.qBittorrent \
-	fr.handbrake.ghb com.yacreader.YACReader org.musicbrainz.Picard \
-	dev.vencord.Vesktop us.zoom.Zoom com.sindresorhus.Caprine \
-	app.ytmdesktop.ytmdesktop io.freetubeapp.FreeTube \
-	io.github.pwr_solaar.solaar \
-	org.upscayl.Upscayl
+	while
+		read -p "fF for full base - lL for crucial/laptop base" base
+	do
+		case $base in
+			([fF]) flatpak install flathub com.github.tchx84.Flatseal io.github.giantpinkrobots.flatsweep me.timschneeberger.jdsp4linux org.gnome.Boxes com.obsproject.Studio org.audacityteam.Audacity org.kde.krita org.kde.kdenlive org.kde.subtitlecomposer io.github.shiftey.Desktop org.qbittorrent.qBittorrent fr.handbrake.ghb com.yacreader.YACReader org.musicbrainz.Picard dev.vencord.Vesktop us.zoom.Zoom com.sindresorhus.Caprine app.ytmdesktop.ytmdesktop io.freetubeapp.FreeTube io.github.pwr_solaar.solaar org.upscayl.Upscayl;;
+			([lL]) flatpak install flathub com.github.tchx84.Flatseal io.github.giantpinkrobots.flatsweep me.timschneeberger.jdsp4linux org.audacityteam.Audacity org.kde.krita org.kde.kdenlive io.github.shiftey.Desktop dev.vencord.Vesktop us.zoom.Zoom com.sindresorhus.Caprine app.ytmdesktop.ytmdesktop io.freetubeapp.FreeTube io.github.pwr_solaar.solaar;;
+			(*) break;;
+		esac
+	done
 }
 
 if ! doTheThing; then
