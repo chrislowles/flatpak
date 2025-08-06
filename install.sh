@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-	echo "Must be run as root."
-	exit 1
-fi
-
 doTheThing() {
 	#sudo flatpak remote-add --if-not-exists flatpaks-beeper https://flatpaks.github.io/beeper/beeper.flatpakrepo
 	#sudo flatpak install flatpaks-beeper com.beeper.beeper
